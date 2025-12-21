@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HiOutlineMenu, HiX } from "react-icons/hi";
@@ -8,6 +8,19 @@ import { HiOutlineMenu, HiX } from "react-icons/hi";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+
+  // 🔒 Lock scroll saat menu mobile terbuka
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
 
   const isActive = (path) => pathname === path;
 
@@ -28,26 +41,10 @@ export default function Navbar() {
 
       {/* DESKTOP MENU */}
       <ul className="hidden md:flex gap-8 font-semibold">
-        <li>
-          <Link href="/" className={linkClass("/")}>
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link href="/about" className={linkClass("/about")}>
-            About
-          </Link>
-        </li>
-        <li>
-          <Link href="/projects" className={linkClass("/projects")}>
-            Projects
-          </Link>
-        </li>
-        <li>
-          <Link href="/sertificates" className={linkClass("/sertificates")}>
-            Sertificates
-          </Link>
-        </li>        
+        <li><Link href="/" className={linkClass("/")}>Home</Link></li>
+        <li><Link href="/about" className={linkClass("/about")}>About</Link></li>
+        <li><Link href="/projects" className={linkClass("/projects")}>Projects</Link></li>
+        <li><Link href="/sertificates" className={linkClass("/sertificates")}>Sertificates</Link></li>
       </ul>
 
       {/* HAMBURGER BUTTON */}
@@ -60,44 +57,12 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       {isOpen && (
-        <div className="absolute top-0 left-0 w-full h-screen bg-[#111] md:hidden z-40">
-          <ul className="flex flex-col items-center gap-6 py-20">
-            <li>
-              <Link
-                href="/"
-                className={linkClass("/")}
-                onClick={() => setIsOpen(false)}
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/about"
-                className={linkClass("/about")}
-                onClick={() => setIsOpen(false)}
-              >
-                About
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/projects"
-                className={linkClass("/projects")}
-                onClick={() => setIsOpen(false)}
-              >
-                Projects
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/sertificates"
-                className={linkClass("/sertificates")}
-                onClick={() => setIsOpen(false)}
-              >
-                Sertificates
-              </Link>
-            </li>
+        <div className="fixed inset-0 bg-[#111] md:hidden z-40">
+          <ul className="flex flex-col items-center justify-center h-full gap-8 text-lg font-semibold">
+            <li><Link href="/" className={linkClass("/")} onClick={() => setIsOpen(false)}>Home</Link></li>
+            <li><Link href="/about" className={linkClass("/about")} onClick={() => setIsOpen(false)}>About</Link></li>
+            <li><Link href="/projects" className={linkClass("/projects")} onClick={() => setIsOpen(false)}>Projects</Link></li>
+            <li><Link href="/sertificates" className={linkClass("/sertificates")} onClick={() => setIsOpen(false)}>Sertificates</Link></li>
           </ul>
         </div>
       )}

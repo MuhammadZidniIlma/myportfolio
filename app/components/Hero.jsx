@@ -48,7 +48,7 @@ export default function Hero() {
           {/* BUTTONS */}
           <div className="flex gap-4 mt-8 justify-center md:justify-start">
             <Link
-              href="/resume.pdf"
+              href="./cv.pdf"
               target="_blank"
               className="px-6 py-2 bg-white text-black rounded-lg font-medium hover:bg-gray-200 transition"
             >
@@ -56,7 +56,7 @@ export default function Hero() {
             </Link>
 
             <Link
-              href="/contact"
+              href="mailto:muhzidnilma@gmail.com"
               className="px-6 py-2 border border-white text-white rounded-lg hover:bg-white hover:text-black transition"
             >
               Contact
