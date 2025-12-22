@@ -332,7 +332,7 @@ const Shuffle = ({
     }
   );
 
-  const baseTw = 'inline-block whitespace-normal break-words will-change-transform uppercase text-[3rem] md:text-[4rem] tracking-[0.35em] leading-none';
+  const baseTw = 'inline-block whitespace-normal break-words will-change-transform uppercase text-[2.5rem] md:text-[4rem] tracking-[0.35em] leading-none';
   const classes = useMemo(
     () => `${baseTw} ${ready ? 'visible' : 'invisible'} ${className}`.trim(),
     [baseTw, ready, className]

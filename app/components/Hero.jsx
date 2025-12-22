@@ -1,14 +1,17 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import TextType from './TextType'
+import useIsDesktop from "./hooks/useIsDesktop";
 
 export default function Hero() {
+  const isDesktop = useIsDesktop();
   return (
     <section className="min-h-[calc(100vh-80px)] flex items-center w-10/12 mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full">
+      <div className={`grid ${isDesktop ? "xl:grid-cols-2" : "grid-cols-1"} xl:grid-cols-2 gap-12 w-full`}>
 
         {/* LEFT IMAGE / ILLUSTRATION */}
-        <div className="flex justify-center items-center order-first md:order-last">
+        <div className={`flex justify-center items-center ${isDesktop ? "order-last" : "oder-first"} order-first xl:order-last`}>
           <div className="relative w-72 h-72 lg:w-96 lg:h-96 aspect-square">
             <Image
               src="/profile.jpg"
@@ -21,15 +24,15 @@ export default function Hero() {
         </div>
 
         {/* RIGHT CONTENT */}
-        <div className="flex flex-col justify-center text-center md:text-left">
+        <div className="flex flex-col justify-center text-center xl:text-left">
 
             <h2 className="text-blue-500 font-bold text-2xl md:text-3xl lg:text-4xl">Hi, I&apos;m </h2>
             <h1 className="mt-2 mb-2 text-white text-3xl md:text-4xl lg:text-5xl font-bold ">             
                 Muhammad Zidni Ilma
             </h1>
-            <h1 className="flex w-full items-center text-3xl md:text-4xl lg:text-5xl font-bold">
+            <h1 className="flex justify-center xl:justify-start w-full items-center text-3xl md:text-4xl lg:text-5xl font-bold">
             <span className="mr-2">I am </span>
-                <TextType 
+                <TextType                 
                 text={["Web Developer", "UI Developer"]}
                 typingSpeed={150}
                 pauseDuration={2000}
@@ -38,15 +41,16 @@ export default function Hero() {
                 />
             </h1>
 
-
+          <div className="flex items-center justify-center xl:justify-start">
           <p className="text-gray-400 mt-6 max-w-xl mx-auto md:mx-0 text-sm md:text-lg">
             As a skilled full-stack developer, I am dedicated to turning ideas
             into innovative web applications. Explore my latest projects and
             articles, showcasing my expertise in Laravel and web development.
           </p>
+          </div>
 
           {/* BUTTONS */}
-          <div className="flex gap-4 mt-8 justify-center md:justify-start">
+          <div className="flex gap-4 mt-8 justify-center xl:justify-start">
             <Link
               href="./cv.pdf"
               target="_blank"

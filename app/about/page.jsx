@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Shuffle from "../components/Shuffle ";
 import Image from "next/image";
@@ -6,6 +7,7 @@ import LogoLoop from '../components/LogoLoop';
 import { Timeline } from "../components/Timeline";
 import { EducationData, TimelineData } from "../components/TimelineData";
 import { SiTailwindcss, SiHtml5, SiSass, SiCss3, SiLaravel, SiMysql, SiSqlite, SiFigma, SiGithub, SiJavascript, SiPrisma, SiBootstrap } from 'react-icons/si';
+import useIsDesktop from "../components/hooks/useIsDesktop";
 
 const techLogos = [
   { node: <SiFigma />, title: "Figma", href: "https://www.figma.com/" },
@@ -23,7 +25,7 @@ const techLogos = [
 ];
 
 export default function About() {
-  
+  const isDesktop = useIsDesktop();
   return (
     <>      
       <div className="w-10/12 mx-auto "> 
@@ -57,10 +59,25 @@ export default function About() {
                 className="object-contain rounded-md z-10"
                 priority
               />
-            </div>
-            <div className="absolute top-0 right-1/4 translate-x-1/2 w-full -mt-16 hidden md:block">
-            <Lanyard position={[0, 0, 15]} gravity={[0, -70, 0]} />
-            </div>
+            </div>            
+            {isDesktop ? (
+              <div className="absolute top-0 right-1/2 translate-x-1/2 w-95 h-95 -mt-16">
+                <Lanyard
+                  position={[0, 0, 15]}
+                  gravity={[0, -70, 0]}
+                />
+              </div>
+            ) : 
+              <div className="relative w-72 h-72 lg:w-96 lg:h-96 aspect-square mb-10 md:mb-0 hidden md:block">
+                <Image
+                  src="/profile.jpg"
+                  alt="Profile Illustration"
+                  fill
+                  className="object-contain rounded-md z-10"
+                  priority
+                />
+              </div>        
+            }
           </div>
         </div>      
       </div>
