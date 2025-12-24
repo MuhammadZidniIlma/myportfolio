@@ -61,7 +61,7 @@ export default function About() {
               />
             </div>            
             {isDesktop ? (
-              <div className="absolute top-0 right-1/2 translate-x-1/2 w-95 h-95 -mt-16">
+              <div className="absolute top-0 -left-1/4 translate-x-1/2 -mt-16 w-full hidden md:block">
                 <Lanyard
                   position={[0, 0, 15]}
                   gravity={[0, -70, 0]}
@@ -78,7 +78,8 @@ export default function About() {
                 />
               </div>        
             }
-          </div>
+          </div>      
+
         </div>      
       </div>
       

@@ -27,10 +27,10 @@ export default function Hero() {
         <div className="flex flex-col justify-center text-center xl:text-left">
 
             <h2 className="text-blue-500 font-bold text-2xl md:text-3xl lg:text-4xl">Hi, I&apos;m </h2>
-            <h1 className="mt-2 mb-2 text-white text-3xl md:text-4xl lg:text-5xl font-bold ">             
+            <h1 className="mt-2 mb-2 text-white text-2xl md:text-4xl lg:text-5xl font-bold ">             
                 Muhammad Zidni Ilma
             </h1>
-            <h1 className="flex justify-center xl:justify-start w-full items-center text-3xl md:text-4xl lg:text-5xl font-bold">
+            <h1 className="flex justify-center xl:justify-start w-full items-center text-[1.5rem] md:text-4xl lg:text-5xl font-bold">
             <span className="mr-2">I am </span>
                 <TextType                 
                 text={["Web Developer", "UI Developer"]}

@@ -17,4 +17,13 @@ export const ProjectsData = [
     liveUrl: "https://dontea-cafe.mzi-project.com/",
     githubUrl: "#",
   },
+  {
+    id: "mzisnap",
+    category: "Website",
+    title: "Website Unduh Foto Video Instagram",
+    image:
+      "./project/3.png",
+    liveUrl: "https://mzi-snap.vercel.app/",
+    githubUrl: "https://github.com/MuhammadZidniIlma/mzi-snap",
+  },
 ];
